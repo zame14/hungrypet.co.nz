@@ -27,9 +27,14 @@ class PetBase
         return $title;
     }
 
-    public function getContent()
+    public function getContent($vc = false)
     {
         $content = wpautop($this->Post->post_content);
+        if($vc)
+        {
+            $content = $this->Post->post_content;
+            $content = apply_filters( 'the_content', $content );
+        }
         return $content;
     }
 

@@ -1,5 +1,8 @@
 <?php
-echo '<div class="award-wrapper"><img src="' . get_option('award') . '" alt="" /></div>';
+//$loyalty = getActiveLoyaltySchemeByUserID(1);
+//print_r($loyalty);
+//print_r($loyalty[0]->Post->ID);
+//$product = wc_get_product( 146 );
+//$avail_vars = $product->get_available_variations();
+//print_r($avail_vars);
 woocommerce_content();
-echo '<div class="cards-wrapper"><img src="' . get_stylesheet_directory_uri() . '/images/cards.png" alt="" /></div>';
-?>

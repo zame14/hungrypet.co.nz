@@ -1,39 +1,32 @@
 <?php
 /**
- * The template for displaying all pages
+ * The template for displaying all pages.
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
  * and that other 'pages' on your WordPress site will use a
  * different template.
  *
- * @package Understrap
+ * @package understrap
  */
 
-// Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
-
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+$user = wp_get_current_user();
+$breeder = get_user_meta($user->id, 'wpcf-breeder', true);
+if($breeder <> 1)
+{
+    echo 'here';
+}
 get_header();
-global $post;
+
 ?>
-    <div class="wrapper" id="page-wrapper">
+    <div class="wrapper" id="home-page-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 no-padding">
-                    <?php
-                    if(is_front_page())
-                    {
-                        ?>
-                        <div class="home-banner-wrapper">
-                            <?=get_the_post_thumbnail($post->ID, 'full')?>
-                            <div class="feature-testimonial-wrapper container">
-                                <div class="inner-wrapper">
-                                    <span class="fa fa-quote-left"></span><?=get_field('featured_testimonial', $post->ID)?>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                    } ?>
+                    <?=heroBanner()?>
                 </div>
             </div>
         </div>
@@ -48,6 +41,5 @@ global $post;
                 </div>
             </div><!-- .row -->
         </div><!-- #content -->
-    </div>
-<?php
-get_footer();
+    </div><!-- #page-wrapper -->
+<?php get_footer(); ?>
